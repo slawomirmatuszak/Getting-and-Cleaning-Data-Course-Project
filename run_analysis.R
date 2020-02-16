@@ -9,6 +9,9 @@ library(tidyr)
 # download and unzip dataset
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 path <- getwd()
+if (!file.exists("data")) { 
+ dir.create("data") 
+}
 download.file(url, file.path(path, "data/dataFiles.zip"))
 unzip(zipfile = "./data/dataFiles.zip", exdir = "./data")
 
