@@ -24,7 +24,6 @@ y_test <- read.table("./data/UCI HAR Dataset/test/y_test.txt", col.names = "code
 subject_train <- read.table("./data/UCI HAR Dataset/train/subject_train.txt", col.names = "subject")
 x_train <- read.table("./data/UCI HAR Dataset/train/X_train.txt", col.names = features$functions)
 y_train <- read.table("./data/UCI HAR Dataset/train/y_train.txt", col.names = "code")
-
 x <- bind_rows(x_train, x_test)
 y <- bind_rows(y_train, y_test)
 subject <- bind_rows(subject_train, subject_test)
@@ -58,4 +57,5 @@ names(data_tidy)<-gsub("-freq()", "Frequency", names(data_tidy), ignore.case = T
 data_summarised_mean <- data_tidy %>%
   group_by(subject, activities) %>%
   summarise_all(mean)
-write.table(data_summarised_mean, "./data/data_summarised_mean.txt", row.name=FALSE)
+write.table(data_summarised_mean, "data_summarised_mean.txt", row.name=FALSE)
+write.csv(data_summarised_mean, "data_summarised_mean.csv")
