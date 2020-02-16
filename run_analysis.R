@@ -56,6 +56,7 @@ names(data_tidy)<-gsub("mean", "Mean", names(data_tidy), ignore.case = TRUE)
 data_tidy_final <- data_tidy %>%
   group_by(subject, activities) %>%
   summarise_all(mean)
+
 # save the output
 write.table(data_tidy_final, "data_tidy_final.txt", row.name=FALSE)
 write.csv(data_tidy_final, "data_tidy_final.csv")
